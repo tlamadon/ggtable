@@ -1,11 +1,11 @@
-Package: rutils
+Package: ggtable
 Type: Package
-Title: Some utility functions
+Title: Pretty latex tables
 Version: 0.1
 Date: 2013-02-14
 Author: Thibaut Lamadon
 Maintainer: Thibaut Lamadon <thibaut.lamadon@gmail.com>
-Description: More about what it does (maybe more than one line)
+Description: Publication quality latex tables
 License: MIT
 Depends:
     R (>= 2.12.1),
@@ -13,12 +13,9 @@ Depends:
     plyr,
     reshape,
     stringr,
-    ggplot2,
-    MSBVAR
+    ggplot2
 LazyLoad: yes
 Collate:
-    'fun.mdata.r'
-    'inc.matlab.r'
-    'inc.stats.r'
-    'inc.utils.r'
-    'rutils-package.r'
+    'fun.utils.r'
+    'ggtable-package.r'
+    'ggtable.r'
