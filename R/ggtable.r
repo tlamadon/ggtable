@@ -24,8 +24,11 @@ require(gdata)
 
 #' @export
 ggt_labeller <- function(str,ll) {
+  if (paste(str) %in% names(ll)) {
+    return(ll[[paste(str)]])
+  }
   #str = gsub('_',' ',paste(str))
-  return(str)
+  return(paste(str))
 }
 
 #' @export
@@ -297,6 +300,7 @@ ggt_computeSpan <- function(sdata,varname) {
   return(res)
 }
 
+#' @method print ggtable
 #' @export
 print.ggtable <- function(ggt,file=NA,view=TRUE,verbose=FALSE) {
   
