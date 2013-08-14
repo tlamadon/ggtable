@@ -24,8 +24,8 @@ require(gdata)
 
 #' @export
 ggt_labeller <- function(str,ll) {
-  if (paste(str) %in% names(ll)) {
-    return(ll[[paste(str)]])
+  if (paste(str)[1] %in% names(ll)) {
+    return(ll[[paste(str)[1]]])
   }
   #str = gsub('_',' ',paste(str))
   return(paste(str))
@@ -77,12 +77,18 @@ ggt_cell_regression <- function(data=NA,desc=list(value='Estimate',sd='Std..Erro
        d2$value[1]    = paste(prettyNum(d[1,desc$value],digit=3))
        d2$hasValue[1] = TRUE
 
-        if ((length(desc$pval)>0) & (desc$pval %in% names(d)))
+        if (( 'pval' %in% desc) & (desc$pval %in% names(d)))
            if (!is.na(d[1,desc$pval]))   
-             if ( d[1,desc$pval] < 0.05) {
-         d2$value[3]    = '*'
-         d2$hasValue[3] = TRUE
-       }
+             if ( d[1,desc$pval] < 0.01) {
+              d2$value[3]    = '***'
+              d2$hasValue[3] = TRUE
+             } else if ( d[1,desc$pval] < 0.05) {
+              d2$value[3]    = '**'
+              d2$hasValue[3] = TRUE
+             } else if ( d[1,desc$pval] < 0.1) {
+              d2$value[3]    = '*'
+              d2$hasValue[3] = TRUE
+             }
 
        if ( ! is.na(d[1,desc$sd])) {
          d2$value[2]    = paste('{\\scriptsize (' , prettyNum(d[1,desc$sd],digit=3), ')}',sep='')
