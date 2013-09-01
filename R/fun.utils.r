@@ -1,3 +1,5 @@
+#' converts model description to data.frame
+#' @export
 model2frame <-function(models) {
 
   if (!('list' %in% class(models))) {
